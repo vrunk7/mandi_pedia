@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SearchResultsScreen extends StatelessWidget {
   final Map<String, dynamic> results;
   final String query;
 
-  const SearchResultsScreen({super.key, required this.results, required this.query});
+  const SearchResultsScreen(
+      {super.key, required this.results, required this.query});
 
   @override
   Widget build(BuildContext context) {
@@ -17,10 +19,11 @@ class SearchResultsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFF1995AD),
-        title: Text("Search Results for '$query'",
-          style: TextStyle(
+        title: Text(
+          "Search Results for '$query'",
+          style: const TextStyle(
             fontWeight: FontWeight.bold,
-        ),
+          ),
         ),
         //textTheme: GoogleFonts.exo2TextTheme(),
       ),
@@ -52,7 +55,7 @@ class SearchResultsScreen extends StatelessWidget {
               ),
             ),
           ),
-           Positioned(
+          Positioned(
             top: 0,
             right: 0,
             child: Image.asset(
@@ -69,10 +72,15 @@ class SearchResultsScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _buildCard('assets/th.jpg', "Zepto", price1, quantity1),
+                _buildCard('assets/th.jpg', "Zepto", price1, quantity1,
+                    "https://www.zeptonow.com/search?query=$query"),
                 const SizedBox(height: 20),
                 _buildCard(
-                    'assets/swiggy-logo.png', "InstaMart", price2, quantity2),
+                    'assets/swiggy-logo.png',
+                    "InstaMart",
+                    price2,
+                    quantity2,
+                    "https://www.swiggy.com/instamart/search?custom_back=true&query=$query"),
               ],
             ),
           ),
@@ -81,28 +89,34 @@ class SearchResultsScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildCard(
-      String imagePath, String title, String price, String quantity) {
-        String formattedPrice = price.contains('₹') ? price : '₹$price';
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15),
-      ),
-      elevation: 5,
-      child: ListTile(
-        contentPadding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-        leading: Image.asset(imagePath, width: 70, height: 100),
-        title: Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
-        subtitle: Text(
-          "$formattedPrice | $quantity",
-          style: const TextStyle(
-            color: Colors.green,
-            fontWeight: FontWeight.w900,
-            fontSize: 18,
+  Widget _buildCard(String imagePath, String title, String price,
+      String quantity, String url) {
+    String formattedPrice = price.contains('₹') ? price : '₹$price';
+    return InkWell(
+      onTap: () {
+        launchUrl(Uri.parse(url));
+      },
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
+        elevation: 5,
+        child: ListTile(
+          contentPadding:
+              const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+          leading: Image.asset(imagePath, width: 70, height: 100),
+          title:
+              Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
+          subtitle: Text(
+            "$formattedPrice | $quantity",
+            style: const TextStyle(
+              color: Colors.green,
+              fontWeight: FontWeight.w900,
+              fontSize: 18,
             ),
+          ),
         ),
       ),
     );
   }
 }
-
