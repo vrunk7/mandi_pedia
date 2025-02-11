@@ -124,36 +124,36 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 20),
-                if (_isLoading || _searchController.text.isNotEmpty)
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        _isLoading =
-                            false; // Stop loading when cancel is pressed
-                        _searchController.clear(); // Clear search text
-                      });
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 10.0),
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(vertical: 10),
-                        width: 120,
-                        decoration: BoxDecoration(
-                          color: Colors.red.withOpacity(0.8),
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: const Text(
-                          "CANCEL",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
+                // const SizedBox(height: 20),
+                // if (_isLoading || _searchController.text.isNotEmpty)
+                //   GestureDetector(
+                //     onTap: () {
+                //       setState(() {
+                //         _isLoading =
+                //             false; // Stop loading when cancel is pressed
+                //         _searchController.clear(); // Clear search text
+                //       });
+                //     },
+                //     child: Padding(
+                //       padding: const EdgeInsets.only(top: 10.0),
+                //       child: Container(
+                //         padding: const EdgeInsets.symmetric(vertical: 10),
+                //         width: 120,
+                //         decoration: BoxDecoration(
+                //           color: Colors.red.withOpacity(0.8),
+                //           borderRadius: BorderRadius.circular(15),
+                //         ),
+                //         child: const Text(
+                //           "CANCEL",
+                //           textAlign: TextAlign.center,
+                //           style: TextStyle(
+                //             color: Colors.white,
+                //             fontWeight: FontWeight.bold,
+                //           ),
+                //         ),
+                //       ),
+                //     ),
+                //   ),
               ],
             ),
           ),
