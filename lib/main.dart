@@ -44,8 +44,8 @@ class _HomePageState extends State<HomePage> {
   final List<Widget> _tabs = [
     const HomeTab(),
     const InspectPricesTab(),
-    Center(child: Text("Close Tab")),
-    Center(child: Text("Profile Tab")),
+    const Center(child: Text("Close Tab")),
+    const Center(child: Text("Profile Tab")),
   ];
 
   @override

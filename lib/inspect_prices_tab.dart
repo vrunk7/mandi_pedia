@@ -69,7 +69,7 @@ class _InspectPricesTabState extends ConsumerState<InspectPricesTab> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('background3.jpg'),
             fit: BoxFit.cover,
@@ -94,7 +94,7 @@ class _InspectPricesTabState extends ConsumerState<InspectPricesTab> {
                         Shadow(
                           blurRadius: 3.0,
                           color: Colors.black.withOpacity(0.5),
-                          offset: Offset(1, 1),
+                          offset: const Offset(1, 1),
                         ),
                       ],
                     ),
@@ -112,7 +112,7 @@ class _InspectPricesTabState extends ConsumerState<InspectPricesTab> {
                 decoration: InputDecoration(
                   hintText: "Search commodity...",
                   suffixIcon: IconButton(
-                    icon: Icon(Icons.search, color: Colors.blueAccent),
+                    icon: const Icon(Icons.search, color: Colors.blueAccent),
                     onPressed: _onSearchButtonPressed,
                   ),
                   border: OutlineInputBorder(
