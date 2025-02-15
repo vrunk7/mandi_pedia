@@ -1,0 +1,464 @@
+{
+  "questions": [
+    {
+      "id": "Q1_FruitOrVegetable",
+      "question": "Is it a fruit or a vegetable?",
+      "options": {
+        "Fruit": "Q2_Fruits",
+        "Vegetable": "Q2_Vegetables"
+      }
+    },
+    {
+      "id": "Q2_Fruits",
+      "question": "Is it a tropical fruit?",
+      "options": {
+        "Yes": "Q3_Tropical",
+        "No": "Q4_NonTropical"
+      }
+    },
+    {
+      "id": "Q3_Tropical",
+      "question": "Does it have a spiky or unique shape?",
+      "options": {
+        "Yes": "Q5_Tropical_Spike",
+        "No": "Q4_Tropical"
+      }
+    },
+    {
+      "id": "Q5_Tropical_Spike",
+      "question": "Does the name involve a fictional animal?",
+      "options": {
+        "Yes": 
+          "It's a Dragon Fruit"
+        ,
+        "No": "Q6_Tropical_Spike"
+      }
+    },
+    {
+      "id": "Q6_Tropical_Spike",
+      "question": "Is it tangy-sweet in taste?",
+      "options": {
+        "Yes":
+          "It's a Passion Fruit"
+        ,
+        "No": "Q7_Tropical_Spike"
+      }
+    },
+    {
+      "id": "Q7_Tropical_Spike",
+      "question": "Does it have sharp spikes?",
+      "options": {
+        "Yes": 
+          "It's a Pineapple"
+        ,
+        "No":
+          "It's a Pomegranate"
+      }
+    },
+    {
+      "id": "Q4_Tropical",
+      "question": "Does it have rough skin and small seeds inside?",
+      "options": {
+        "Yes": "Q5_Tropical_Rough",
+        "No": "Q6_Tropical_NonRough"
+      }
+    },
+    {
+      "id": "Q6_Tropical_NonRough",
+      "question": "Is it a citrus fruit?",
+      "options": {
+        "Yes": "Q7_Tropical_Citrus",
+        "No": "Q8_Tropical_NonCitrus"
+      }
+    },
+    {
+      "id": "Q7_Tropical_Citrus",
+      "question": "Is the fruit’s name also a color?",
+      "options": {
+        "Yes": 
+          "It's a Orange"
+        ,
+        "No": "Q8_Tropical_Citrus"
+      }
+    },
+    {
+      "id": "Q8_Tropical_Citrus",
+      "question": "Is it green in color?",
+      "options": {
+        "Yes": 
+          "It's a Lime"
+        ,
+        "No": 
+          "It's a Lemon"
+      }
+    },
+    {
+      "id": "Q8_Tropical_NonCitrus",
+      "question": "Is it yellow in color?",
+      "options": {
+        "Yes": "Q9_Tropical_NonCitrus",
+        "No": "Q10_Tropical_NonCitrus"
+      }
+    },
+    {
+      "id": "Q9_Tropical_NonCitrus",
+      "question": "Is it the king of all fruits?",
+      "options": {
+        "Yes": 
+          "It's a Mango"
+        ,
+        "No": 
+          "It's a Banana"
+      }
+    },
+    {
+      "id": "Q10_Tropical_NonCitrus",
+      "question": "Is it a melon?",
+      "options": {
+        "Yes": "Q11_Tropical_Melon",
+        "No": "Q5_Tropical_Rough"
+      }
+    },
+    {
+      "id": "Q11_Tropical_Melon",
+      "question": "Is there a song by Harry Styles named after this fruit?",
+      "options": {
+        "Yes": 
+          "It's a Watermelon"
+        ,
+        "No": 
+          "It's a Melon"
+        
+      }
+    },
+    {
+      "id": "Q5_Tropical_Rough",
+      "question": "Is it green in color?",
+      "options": {
+        "Yes": "Q6_Tropical_Rough",
+        "No": 
+          "It's a Lychee"
+        
+      }
+    },
+    {
+      "id": "Q6_Tropical_Rough",
+      "question": "Is it edible while still green?",
+      "options": {
+        "Yes": 
+          "It's a Guava"
+        ,
+        "No": 
+          "It's a Papaya"
+        
+      }
+    },
+    {
+      "id": "Q4_NonTropical",
+      "question": "Is it a berry?",
+      "options": {
+        "Yes": "Q5_NonTropical_Berry",
+        "No": "Q5_NonTropical"
+      }
+    },
+    {
+      "id": "Q5_NonTropical_Berry",
+      "question": "Does it have seeds on the outside?",
+      "options": {
+        "Yes": 
+          "It's a Strawberry"
+        ,
+        "No": "Q6_NonTropical_Berry"
+      }
+    },
+    {
+      "id": "Q6_NonTropical_Berry",
+      "question": "Does the name sound like a mobile company’s name?",
+      "options": {
+        "Yes": 
+          "It's a Blackberry"
+        ,
+        "No": "Q7_NonTropical_Berry"
+      }
+    },
+    {
+      "id": "Q7_NonTropical_Berry",
+      "question": "Is it blue in color?",
+      "options": {
+        "Yes": 
+          "It's a Blueberry"
+        ,
+        "No": 
+          "It's a Cranberry"
+        
+      }
+    },
+    {
+      "id": "Q5_NonTropical",
+      "question": "Does it have a pit (stone fruit)?",
+      "options": {
+        "Yes": "Q6_NonTropical_Pit",
+        "No": "Q7_NonTropical"
+      }
+    },
+    {
+      "id": "Q6_NonTropical_Pit",
+      "question": "Is there a Justin Bieber song named after this fruit?",
+      "options": {
+        "Yes": 
+          "It's a Peach"
+        ,
+        "No": "Q7_NonTropical_Pit"
+      }
+    },
+    {
+      "id": "Q7_NonTropical_Pit",
+      "question": "Does this fruit dry to form prunes?",
+      "options": {
+        "Yes": 
+          "It's a Plum"
+        ,
+        "No": 
+          "It's an Apricot"
+        
+      }
+    },
+    {
+      "id": "Q7_NonTropical",
+      "question": "Is it small and round?",
+      "options": {
+        "Yes": "Q8_NonTropical_Small",
+        "No": "Q9_NonTropical_Big"
+      }
+    },
+    {
+      "id": "Q8_NonTropical_Small",
+      "question": "Is it most commonly used on cakes?",
+      "options": {
+        "Yes": 
+          "It's a Cherry"
+        ,
+        "No": "Unknown"
+      }
+    },
+    {
+      "id": "Q9_NonTropical_Big",
+      "question": "Is it the fruit responsible for inspiring the discovery of gravitational force?",
+      "options": {
+        "Yes": "It's an Apple",
+        "No" : "you need to Try Again or i am maybe i am not able to guess it"
+      }
+    },
+{
+  "id": "Q2_Vegetables",
+  "question": "Is it a root vegetable?",
+  "options": {
+    "Yes": "root_veg1",
+    "No": "Q3_Vegetables"
+  }
+},
+{
+  "id": "root_veg1",
+  "question": "Is the vegetable round or oval?",
+  "options": {
+    "Yes": "root_veg2",
+    "No": "root_veg3"
+  }
+},
+{
+  "id": "root_veg2",
+  "question": "Is the vegetable often used to make fries or chips?",
+  "options": {
+    "Yes": "It’s a Potato.",
+    "No": "It’s a Beetroot."
+  }
+},
+{
+  "id": "root_veg3",
+  "question": "Is it often eaten raw in salads?",
+  "options": {
+    "Yes": "root_veg4",
+    "No": "root_veg4"
+  }
+},
+{
+  "id": "root_veg4",
+  "question": "Is the vegetable orange in color?",
+  "options": {
+    "Yes": "It's a Carrot",
+    "No": "It's a Raddish"
+  }
+},
+{
+  "id": "Q3_Vegetables",
+  "question": "Is it a leafy vegetable?",
+  "options": {
+    "Yes": "leaf_veg1",
+    "No": "Q4_Vegetables"
+  }
+},
+{
+  "id": "leaf_veg1",
+  "question": "Does the vegetable have a dense, bumpy head or florets?",
+  "options": {
+    "Yes": "leaf_veg3",
+    "No": "leaf_veg2"
+  }
+},
+{
+  "id": "leaf_veg3",
+  "question": "Does it look like a miniature tree with lots of branches?",
+  "options": {
+    "Yes": "It's a Broccoli",
+    "No": "It's a Cauliflower"
+  }
+},
+{
+  "id": "leaf_veg2",
+  "question": "Are the leaves tightly packed into a round shape?",
+  "options": {
+    "Yes": "It's a Cabbage",
+    "No": "leaf_veg2.1"
+  }
+},
+{
+  "id": "leaf_veg2.1",
+  "question": "Is it the vegetable that gives Popeye his strength?",
+  "options": {
+    "Yes": "It's a Spinach",
+    "No": "leaf_veg2.2"
+  }
+},
+{
+  "id": "leaf_veg2.2",
+  "question": "Is this vegetable mostly used in salads and burgers?",
+  "options": {
+    "Yes": "It's a Lettuce",
+    "No": "It's a Spinach"
+  }
+},
+
+{
+  "id": "Q4_Vegetables",
+  "question": "Does it grow on a vine?",
+  "options": {
+    "Yes": "vine_1",
+    "No": "Q5_Vegetables"
+  }
+},
+{
+  "id": "vine_1",
+  "question": "Is it bitter in taste and everyone hates it?",
+  "options": {
+    "Yes": "It's a Bitter Gourd",
+    "No": "vine_2"
+  }
+},
+{
+  "id": "vine_2",
+  "question": "Is it something you'd carve a face into for Halloween",
+  "options": {
+    "Yes": "It's a Pumpkin",
+    "No": "vine_3"
+  }
+},
+{
+  "id": "vine_3",
+  "question": "Are they cool and refreshing, perfect for a summer salad, and sometimes pickled?",
+  "options": {
+    "Yes": "It's a Cucumber",
+    "No": "vine_4"
+  }
+},
+{
+  "id": "vine_4",
+  "question": "Are they tiny, round, and grow in pods?",
+  "options": {
+    "Yes": "It's a Peas",
+    "No": "vine_5"
+  }
+},
+{
+  "id": "vine_5",
+  "question": "Are they long and cylindrical and sometimes used Pizzas?",
+  "options": {
+    "Yes": "It's a Zucchini",
+    "No": "Q5_Vegetables"
+  }
+},
+
+{
+  "id": "Q5_Vegetables",
+  "question": "Does it have a strong, pungent smell, and is said to ward off vampires?",
+  "options": {
+    "Yes": "It's a Garlic",
+    "No": "Q6_Vegetables"
+  }
+},
+{
+  "id": "Q6_Vegetables",
+  "question": "Is it a bulb, like a small, layered sphere, and makes you cry when you chop it?",
+  "options": {
+    "Yes": "It's an Onion",
+    "No": "Q7_Vegetables"
+  }
+},
+{
+  "id": "Q7_Vegetables",
+  "question": "Is it often eaten raw in salads or as a pizza topping?",
+  "options": {
+    "Yes": "It's a Capsicum (Bell Pepper)",
+    "No": "Q8_Vegetables"
+  }
+},
+{
+  "id": "Q8_Vegetables",
+  "question": "Is it often cut into little round slices like wheels?",
+  "options": {
+    "Yes": "It's an Okra (Lady Finger)",
+    "No": "Q9_Vegetables"
+  }
+},
+{
+  "id": "Q9_Vegetables",
+  "question": "Is it long and slender, resembling a finger?",
+  "options": {
+    "Yes": "It's an Okra (Lady Finger)",
+    "No": "Q11_Vegetables"
+  }
+},
+
+{
+  "id": "Q11_Vegetables",
+  "question": "Does its name start with something you’d find on a poultry farm?",
+  "options": {
+    "Yes": "It's an EggPlant (Brinjal)",
+    "No": "Q12_Vegetables"
+  }
+},
+{
+  "id": "Q12_Vegetables",
+  "question": "Does it have a deep purple, glossy skin?",
+  "options": {
+    "Yes": "It's an EggPlant (Brinjal)",
+    "No": "Q13_Vegetables"
+  }
+},
+{
+  "id": "Q13_Vegetables",
+  "question": "Does the vegetable have a dense, bumpy head or florets?",
+  "options": {
+    "Yes": "Q14_Vegetables",
+    "No": "you need to Try Again or i am maybe i am not able to guess it"
+  }
+},
+{
+  "id": "Q14_Vegetables",
+  "question": "Does it look like a miniature tree with lots of branches?",
+  "options": {
+    "Yes": "It's a Broccoli",
+    "No": "It's a Cauliflower"
+  }
+}
+]
+}

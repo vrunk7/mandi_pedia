@@ -11,6 +11,7 @@ import 'inspect_prices_tab.dart';
 import 'akinator.dart';
 import 'splash_screen.dart';
 
+
 void main() {
   runApp(
     const ProviderScope(
@@ -50,7 +51,7 @@ class _HomePageState extends State<HomePage> {
     const InspectPricesTab(key: ValueKey('InspectPricesTab')), // Unique key
     const MandiPediaApp(key: ValueKey('MandiPediaApp')), // Unique key
     const Guess_Price(key: ValueKey('Guess_Price')), // Unique key
-    const AkinatorApp(key: ValueKey('AkinatorApp')), // Unique key
+    Fruvenator(), // Unique key
   ];
 
   @override

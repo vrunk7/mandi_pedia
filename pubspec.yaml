@@ -42,6 +42,7 @@ dependencies:
   flutter_riverpod: ^2.6.1
   url_launcher: ^6.3.1
   font_awesome_flutter: ^10.8.0
+  outlined_text: ^1.0.1
 
 dev_dependencies:
   flutter_test:
@@ -80,6 +81,13 @@ flutter:
     - assets/mango.jpg
     - assets/bg10.jpg
     - assets/Bg4.jpg
+    - assets/fruit_veggie_akinator.json
+    - assets/ak1.jpeg
+    - assets/defi.webp
+    - assets/ak2.png
+    - assets/ak3.png
+    - assets/ak4.png
+    - assets/ak6.png
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

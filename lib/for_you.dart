@@ -27,7 +27,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _selectedIndex = 0;
+  final int _selectedIndex = 0;
   final ScrollController _scrollController = ScrollController();
   List<Map<String, dynamic>> topSearchedFruits = [];
   List<Map<String, dynamic>> topSellingFruits = [];
