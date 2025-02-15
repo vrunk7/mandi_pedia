@@ -66,9 +66,19 @@ flutter:
     - assets/bb.png
     - assets/swiggy-logo.png
     - assets/logo2.png
-    - assets/data.json
     - assets/background3.jpg
     - assets/prices.json
+    - assets/data.json
+    - assets/apple.jpg
+    - assets/lychee.jpg
+    - assets/plum.jpg
+    - assets/banana.jpg
+    - assets/cherry.jpg
+    - assets/strawberry.jpg
+    - assets/potato.jpg
+    - assets/onion.jpg
+    - assets/mango.jpg
+    - assets/bg10.jpg
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

@@ -1,91 +1,199 @@
 {
-    "shoppingList": {
-      "groceries": [
-        {
-          "item": "Apples",
-          "quantity": 3,
-          "unit": "lbs"
-        },
-        {
-            "item": "Grapes",
-            "quantity": 2,
-            "unit": "lbs"
-          },
-
-        {
-          "item": "Bread",
-          "quantity": 2,
-          "unit": "loaves"
-        },
-        {
-          "item": "Milk",
-          "quantity": 1,
-          "unit": "gallon"
-        },
-        {
-          "item": "Eggs",
-          "quantity": 1,
-          "unit": "dozen"
-        },
-        {
-          "item": "Chicken",
-          "quantity": 2,
-          "unit": "lbs"
-        },
-        {
-            "item": "Meat",
-            "quantity": 1,
-            "unit": "lbs"
-        },
-        {
-            "item": "Tomato",
-            "quantity": 2,
-            "unit": "lbs"
-        }
-      ],
-      "personalCare": [
-        {
-          "item": "Toothpaste",
-          "quantity": 2,
-          "unit": "packs"
-        },
-        {
-          "item": "Shampoo",
-          "quantity": 1,
-          "unit": "bottle"
-        },
-        {
-          "item": "Soap",
-          "quantity": 3,
-          "unit": "bars"
-        },
-        {
-          "item": "Toilet Paper",
-          "quantity": 1,
-          "unit": "pack"
-        }
-      ],
-      "householdItems": [
-        {
-          "item": "Paper Towels",
-          "quantity": 4,
-          "unit": "rolls"
-        },
-        {
-          "item": "Laundry Detergent",
-          "quantity": 1,
-          "unit": "container"
-        },
-        {
-          "item": "Trash Bags",
-          "quantity": 2,
-          "unit": "boxes"
-        },
-        {
-          "item": "Batteries",
-          "quantity": 1,
-          "unit": "pack"
-        }
-      ]
+  "user_searches": [
+    {
+      "fruit": "Apple",
+      "times_searched": 5,
+      "sales": 50
+    },
+    {
+      "fruit": "Banana",
+      "times_searched": 10,
+      "sales": 30
+    },
+    {
+      "fruit": "Orange",
+      "times_searched": 3,
+      "sales": 25
+    },
+    {
+      "fruit": "Mango",
+      "times_searched": 127,
+      "sales": 40
+    },
+    {
+      "fruit": "Pineapple",
+      "times_searched": 2,
+      "sales": 15
+    },
+    {
+      "fruit": "Strawberry",
+      "times_searched": 12,
+      "sales": 45
+    },
+    {
+      "fruit": "Blueberry",
+      "times_searched": 8,
+      "sales": 35
+    },
+    {
+      "fruit": "Grapes",
+      "times_searched": 6,
+      "sales": 20
+    },
+    {
+      "fruit": "Peach",
+      "times_searched": 7,
+      "sales": 30
+    },
+    {
+      "fruit": "Plum",
+      "times_searched": 9,
+      "sales": 50
+    },
+    {
+      "fruit": "Pear",
+      "times_searched": 3,
+      "sales": 18
+    },
+    {
+      "fruit": "Kiwi",
+      "times_searched": 2,
+      "sales": 12
+    },
+    {
+      "fruit": "Cherry",
+      "times_searched": 15,
+      "sales": 60
+    },
+    {
+      "fruit": "Watermelon",
+      "times_searched": 1,
+      "sales": 10
+    },
+    {
+      "fruit": "Papaya",
+      "times_searched": 4,
+      "sales": 20
+    },
+    {
+      "fruit": "Lychee",
+      "times_searched": 10,
+      "sales": 50
+    },
+    {
+      "fruit": "Cantaloupe",
+      "times_searched": 2,
+      "sales": 8
+    },
+    {
+      "fruit": "Fig",
+      "times_searched": 5,
+      "sales": 25
+    },
+    {
+      "fruit": "Apricot",
+      "times_searched": 8,
+      "sales": 38
+    },
+    {
+      "fruit": "Raspberry",
+      "times_searched": 6,
+      "sales": 22
+    },
+    {
+      "fruit": "Potato",
+      "times_searched": 6,
+      "sales": 100
+    },
+    {
+      "fruit": "Onion",
+      "times_searched": 6,
+      "sales": 200
+    },
+    {
+      "fruit": "Carrot",
+      "times_searched": 7,
+      "sales": 75
+    },
+    {
+      "fruit": "Tomato",
+      "times_searched": 9,
+      "sales": 120
+    },
+    {
+      "fruit": "Cucumber",
+      "times_searched": 5,
+      "sales": 55
+    },
+    {
+      "fruit": "Bell Pepper",
+      "times_searched": 6,
+      "sales": 45
+    },
+    {
+      "fruit": "Spinach",
+      "times_searched": 4,
+      "sales": 30
+    },
+    {
+      "fruit": "Lettuce",
+      "times_searched": 3,
+      "sales": 25
+    },
+    {
+      "fruit": "Broccoli",
+      "times_searched": 5,
+      "sales": 50
+    },
+    {
+      "fruit": "Cauliflower",
+      "times_searched": 4,
+      "sales": 45
+    },
+    {
+      "fruit": "Zucchini",
+      "times_searched": 6,
+      "sales": 40
+    },
+    {
+      "fruit": "Radish",
+      "times_searched": 8,
+      "sales": 35
+    },
+    {
+      "fruit": "Blackberries",
+      "times_searched": 7,
+      "sales": 30
+    },
+    {
+      "fruit": "Coconut",
+      "times_searched": 9,
+      "sales": 50
+    },
+    {
+      "fruit": "Pomegranate",
+      "times_searched": 6,
+      "sales": 42
+    },
+    {
+      "fruit": "Passionfruit",
+      "times_searched": 3,
+      "sales": 18
+    },
+    {
+      "fruit": "Guava",
+      "times_searched": 4,
+      "sales": 28
+    },
+    {
+      "fruit": "Dragonfruit",
+      "times_searched": 5,
+      "sales": 32
+    },
+    {
+      "fruit": "Cranberry",
+      "times_searched": 7,
+      "sales": 38
     }
+  ]
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flashy_tab_bar2/flashy_tab_bar2.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'for_you.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
   final List<Widget> _tabs = [
     const HomeTab(),
     const InspectPricesTab(),
-    const Center(child: Text("Close Tab")),
+    const MandiPediaApp(),
     const Center(child: Text("Profile Tab")),
   ];
 

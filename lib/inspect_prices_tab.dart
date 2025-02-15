@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/services.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 // Define Riverpod provider to fetch data from JSON
 final productDataProvider = FutureProvider<List<TrendData>>((ref) async {
@@ -93,91 +94,98 @@ class _InspectPricesTabState extends ConsumerState<InspectPricesTab> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/background3.jpg'),
-            fit: BoxFit.cover,
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        textTheme: GoogleFonts.exo2TextTheme(),
+      ),
+      home: Scaffold(
+        body: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/background3.jpg'),
+              fit: BoxFit.cover,
+            ),
           ),
-        ),
-        child: Column(
-          children: [
-            // Header Section
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "MandiPedia",
-                    style: TextStyle(
-                      fontSize: 34,
+          child: Column(
+            children: [
+              // Header Section
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "MandiPedia",
+                      style: TextStyle(
+                        fontSize: 34,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        letterSpacing: 1.5,
+                        shadows: [
+                          Shadow(
+                            blurRadius: 3.0,
+                            color: Colors.black.withOpacity(0.5),
+                            offset: const Offset(1, 1),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Image.asset('assets/logo2.png', height: 95, width: 90),
+                  ],
+                ),
+              ),
+
+              // Search Bar
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: TextField(
+                  controller: _searchController,
+                  decoration: InputDecoration(
+                    hintText: "Search commodity...",
+                    suffixIcon: IconButton(
+                      icon: const Icon(Icons.search, color: Colors.blueAccent),
+                      onPressed: _onSearchButtonPressed,
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30.0),
+                      borderSide: BorderSide.none,
+                    ),
+                    filled: true,
+                    fillColor: Colors.white.withOpacity(0.8),
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 20),
+
+              // Display quote when no graph is shown
+              if (!_showGraph)
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Text(
+                    _randomQuote,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      fontSize: 22,
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
-                      letterSpacing: 1.5,
-                      shadows: [
-                        Shadow(
-                          blurRadius: 3.0,
-                          color: Colors.black.withOpacity(0.5),
-                          offset: const Offset(1, 1),
-                        ),
-                      ],
+                      fontStyle: FontStyle.italic,
                     ),
                   ),
-                  Image.asset('assets/logo2.png', height: 95, width: 90),
-                ],
-              ),
-            ),
-
-            // Search Bar
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: TextField(
-                controller: _searchController,
-                decoration: InputDecoration(
-                  hintText: "Search commodity...",
-                  suffixIcon: IconButton(
-                    icon: const Icon(Icons.search, color: Colors.blueAccent),
-                    onPressed: _onSearchButtonPressed,
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30.0),
-                    borderSide: BorderSide.none,
-                  ),
-                  filled: true,
-                  fillColor: Colors.white.withOpacity(0.8),
                 ),
-              ),
-            ),
 
-            const SizedBox(height: 20),
-
-            // Display quote when no graph is shown
-            if (!_showGraph)
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Text(
-                  _randomQuote,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                    fontStyle: FontStyle.italic,
+              // Display graph if search is valid
+              if (_showGraph)
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TrendLineChart(trendData: _filteredData),
                   ),
                 ),
-              ),
-
-            // Display graph if search is valid
-            if (_showGraph)
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TrendLineChart(trendData: _filteredData),
-                ),
-              ),
-          ],
+            ],
+          ),
         ),
       ),
     );
