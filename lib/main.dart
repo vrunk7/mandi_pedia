@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flashy_tab_bar2/flashy_tab_bar2.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
@@ -66,16 +67,16 @@ class _HomePageState extends State<HomePage> {
             title: const Text('Home'),
           ),
           FlashyTabBarItem(
-            icon: const Icon(Icons.tag),
-            title: const Text('Tags'),
+            icon: Icon(Icons.trending_up),
+            title: const Text('Trends'),
           ),
           FlashyTabBarItem(
-            icon: const Icon(Icons.close),
-            title: const Text('Close'),
+            icon: const Icon(Icons.recommend),
+            title: const Text('For You'),
           ),
           FlashyTabBarItem(
-            icon: const Icon(Icons.person),
-            title: const Text('Profile'),
+            icon: Icon(Icons.sports_esports),
+            title: const Text('Game'),
           ),
         ],
       ),
@@ -259,7 +260,7 @@ class _HomeTabState extends State<HomeTab> {
   }
 }
 
- // import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart';
 // import 'package:flashy_tab_bar2/flashy_tab_bar2.dart';
 // import 'package:flutter_riverpod/flutter_riverpod.dart';
 // import 'package:google_fonts/google_fonts.dart';
