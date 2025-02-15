@@ -9,6 +9,7 @@ import 'dart:convert';
 import 'search_result.dart';
 import 'inspect_prices_tab.dart';
 import 'akinator.dart';
+import 'splash_screen.dart';
 
 void main() {
   runApp(
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: const Color(0xFFF1F1F2),
         textTheme: GoogleFonts.exo2TextTheme(),
       ),
-      home: const HomePage(),
+      home: const SplashScreen(),
     );
   }
 }
@@ -45,20 +46,43 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
   final List<Widget> _tabs = [
-    const HomeTab(),
-    const InspectPricesTab(),
-    const MandiPediaApp(),
-    const Guess_Price(),
-    const AkinatorApp(),
+    const HomeTab(key: ValueKey('HomeTab')), // Unique key
+    const InspectPricesTab(key: ValueKey('InspectPricesTab')), // Unique key
+    const MandiPediaApp(key: ValueKey('MandiPediaApp')), // Unique key
+    const Guess_Price(key: ValueKey('Guess_Price')), // Unique key
+    const AkinatorApp(key: ValueKey('AkinatorApp')), // Unique key
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _tabs[_selectedIndex],
+      body: AnimatedSwitcher(
+        duration: const Duration(milliseconds: 4000), // Animation duration
+        // transitionBuilder: (Widget child, Animation<double> animation) {
+        //   return FadeTransition(
+        //     opacity: animation,
+        //     child: child,
+        //   );
+        // },
+        // transitionBuilder: (Widget child, Animation<double> animation) {
+        //   return SlideTransition(
+        //     position: Tween<Offset>(
+        //       begin: const Offset(1.0, 0.0), // Slide from right
+        //       end: Offset.zero, // Slide to the center
+        //     ).animate(animation),
+        //     child: child,
+        //   );
+        // },
+        transitionBuilder: (Widget child, Animation<double> animation) {
+          return ScaleTransition(
+            scale: animation,
+            child: child,
+          );
+        },
+        child: _tabs[_selectedIndex], // Current tab content
+      ),
       bottomNavigationBar: FlashyTabBar(
         selectedIndex: _selectedIndex,
-        //backgroundColor: Color.fromARGB(255, 214, 212, 69),
         animationDuration: const Duration(milliseconds: 500),
         onItemSelected: (index) {
           setState(() {

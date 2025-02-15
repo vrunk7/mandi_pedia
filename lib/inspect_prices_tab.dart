@@ -45,10 +45,13 @@ class InspectPricesTab extends ConsumerStatefulWidget {
   _InspectPricesTabState createState() => _InspectPricesTabState();
 }
 
-class _InspectPricesTabState extends ConsumerState<InspectPricesTab> {
+class _InspectPricesTabState extends ConsumerState<InspectPricesTab>
+    with SingleTickerProviderStateMixin {
   final TextEditingController _searchController = TextEditingController();
   List<TrendData> _filteredData = [];
   bool _showGraph = false;
+  late AnimationController _animationController;
+  late Animation<double> _animation;
 
   final List<String> _quotes = [
     '"The price of success is hard work."',
@@ -69,6 +72,17 @@ class _InspectPricesTabState extends ConsumerState<InspectPricesTab> {
   void initState() {
     super.initState();
     _randomQuote = (_quotes..shuffle()).first;
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 1), // Animation duration
+    );
+    _animation = Tween<double>(begin: 0, end: 1).animate(
+      CurvedAnimation(
+        parent: _animationController,
+        curve: Curves.easeInOut, // Smooth easing curve
+      ),
+    );
+    _animationController.forward();
   }
 
   void _onSearchButtonPressed() {
@@ -90,6 +104,12 @@ class _InspectPricesTabState extends ConsumerState<InspectPricesTab> {
           .toList();
       _showGraph = _filteredData.isNotEmpty;
     });
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose(); // Dispose the controller
+    super.dispose();
   }
 
   @override
@@ -181,7 +201,10 @@ class _InspectPricesTabState extends ConsumerState<InspectPricesTab> {
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: TrendLineChart(trendData: _filteredData),
+                    child: TrendLineChart(
+                      trendData: _filteredData,
+                      animation: _animation, // Pass the animation
+                    ),
                   ),
                 ),
             ],
@@ -194,8 +217,13 @@ class _InspectPricesTabState extends ConsumerState<InspectPricesTab> {
 
 class TrendLineChart extends StatelessWidget {
   final List<TrendData> trendData;
+  final Animation<double> animation;
 
-  const TrendLineChart({super.key, required this.trendData});
+  const TrendLineChart({
+    super.key,
+    required this.trendData,
+    required this.animation,
+  });
 
   @override
   Widget build(BuildContext context) {
