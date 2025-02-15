@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flashy_tab_bar2/flashy_tab_bar2.dart';
 import 'for_you.dart';
+import 'guess_price.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
@@ -46,7 +47,7 @@ class _HomePageState extends State<HomePage> {
     const HomeTab(),
     const InspectPricesTab(),
     const MandiPediaApp(),
-    const Center(child: Text("Profile Tab")),
+    const Guess_Price(),
   ];
 
   @override
@@ -55,6 +56,7 @@ class _HomePageState extends State<HomePage> {
       body: _tabs[_selectedIndex],
       bottomNavigationBar: FlashyTabBar(
         selectedIndex: _selectedIndex,
+        //backgroundColor: Color.fromARGB(255, 214, 212, 69),
         animationDuration: const Duration(milliseconds: 500),
         onItemSelected: (index) {
           setState(() {
