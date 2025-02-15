@@ -73,10 +73,26 @@ class _HomePageState extends State<HomePage> {
         //     child: child,
         //   );
         // },
+        // transitionBuilder: (Widget child, Animation<double> animation) {
+        //   return ScaleTransition(
+        //     scale: animation,
+        //     child: child,
+        //   );
+        // },
         transitionBuilder: (Widget child, Animation<double> animation) {
-          return ScaleTransition(
-            scale: animation,
-            child: child,
+          // Combined Slide + Fade Transition
+          return SlideTransition(
+            position: Tween<Offset>(
+              begin: const Offset(1.0, 0.0), // Slide from right
+              end: Offset.zero, // Slide to the center
+            ).animate(CurvedAnimation(
+              parent: animation,
+              curve: Curves.easeInOut, // Smooth easing curve
+            )),
+            child: FadeTransition(
+              opacity: animation,
+              child: child,
+            ),
           );
         },
         child: _tabs[_selectedIndex], // Current tab content
