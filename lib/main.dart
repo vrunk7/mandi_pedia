@@ -56,47 +56,58 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // body: AnimatedSwitcher(
+      //   duration: const Duration(milliseconds: 2000), // Animation duration
+      //   transitionBuilder: (Widget child, Animation<double> animation) {
+      //     return SlideTransition(
+      //       position: Tween<Offset>(
+      //         begin: const Offset(1.0, 0.0), // Slide from right
+      //         end: Offset.zero, // Slide to the center
+      //       ).animate(animation),
+      //       child: child,
+      //     );
+      //   },
+      //   child: _tabs[_selectedIndex], // Current tab content
+      // ),
+
       body: AnimatedSwitcher(
-        duration: const Duration(milliseconds: 4000), // Animation duration
-        // transitionBuilder: (Widget child, Animation<double> animation) {
-        //   return FadeTransition(
-        //     opacity: animation,
-        //     child: child,
-        //   );
-        // },
-        // transitionBuilder: (Widget child, Animation<double> animation) {
-        //   return SlideTransition(
-        //     position: Tween<Offset>(
-        //       begin: const Offset(1.0, 0.0), // Slide from right
-        //       end: Offset.zero, // Slide to the center
-        //     ).animate(animation),
-        //     child: child,
-        //   );
-        // },
-        // transitionBuilder: (Widget child, Animation<double> animation) {
-        //   return ScaleTransition(
-        //     scale: animation,
-        //     child: child,
-        //   );
-        // },
+        duration: const Duration(milliseconds: 800), // Smooth transition speed
+        switchInCurve: Curves.easeOutExpo, // Smooth entry
+        switchOutCurve: Curves.easeInOut, // Smooth exit
         transitionBuilder: (Widget child, Animation<double> animation) {
-          // Combined Slide + Fade Transition
-          return SlideTransition(
-            position: Tween<Offset>(
-              begin: const Offset(1.0, 0.0), // Slide from right
-              end: Offset.zero, // Slide to the center
-            ).animate(CurvedAnimation(
-              parent: animation,
-              curve: Curves.easeInOut, // Smooth easing curve
-            )),
-            child: FadeTransition(
-              opacity: animation,
-              child: child,
+          // Slide Animation (Parallax effect)
+          var slideAnimation = Tween<Offset>(
+            begin: Offset(1.2, 0.0), // Slightly further for depth
+            end: Offset.zero,
+          ).animate(animation);
+
+          // Fade Animation
+          var fadeAnimation = Tween<double>(
+            begin: 0.0,
+            end: 1.0,
+          ).animate(animation);
+
+          // Scale Animation (Subtle zoom-in)
+          var scaleAnimation = Tween<double>(
+            begin: 0.9, // Slightly zoomed out at first
+            end: 1.0,
+          ).animate(
+              CurvedAnimation(parent: animation, curve: Curves.fastOutSlowIn));
+
+          return FadeTransition(
+            opacity: fadeAnimation,
+            child: ScaleTransition(
+              scale: scaleAnimation,
+              child: SlideTransition(
+                position: slideAnimation,
+                child: child,
+              ),
             ),
           );
         },
         child: _tabs[_selectedIndex], // Current tab content
       ),
+
       bottomNavigationBar: FlashyTabBar(
         selectedIndex: _selectedIndex,
         animationDuration: const Duration(milliseconds: 500),
