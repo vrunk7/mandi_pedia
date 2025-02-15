@@ -161,8 +161,8 @@ class _HomeScreenState extends State<HomeScreen> {
           Positioned(
             top: 30,
             left: 20,
-            child: const Text(
-              "Mandipedia",
+            child: Text(
+              "MandiPedia",
               style: TextStyle(
                 fontSize: 34,
                 fontWeight: FontWeight.bold,
@@ -171,7 +171,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 shadows: [
                   Shadow(
                     blurRadius: 3.0,
-                    color: Colors.black,
+                    color: Colors.black.withOpacity(0.5),
                     offset: const Offset(1, 1),
                   ),
                 ],
@@ -179,11 +179,12 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           Positioned(
-            top: 30,
-            left: 300,
+            top: 0,
+            right: 0,
             child: Image.asset(
-              'assets/logo2.png', // Path to your logo image
-              width: 150, // Adjust the width as needed
+              'assets/logo2.png',
+              height: 95,
+              width: 90,
             ),
           ),
           Column(

@@ -8,6 +8,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'search_result.dart';
 import 'inspect_prices_tab.dart';
+import 'akinator.dart';
 
 void main() {
   runApp(
@@ -48,6 +49,7 @@ class _HomePageState extends State<HomePage> {
     const InspectPricesTab(),
     const MandiPediaApp(),
     const Guess_Price(),
+    const AkinatorApp(),
   ];
 
   @override
@@ -79,6 +81,10 @@ class _HomePageState extends State<HomePage> {
           FlashyTabBarItem(
             icon: Icon(Icons.sports_esports),
             title: const Text('Game'),
+          ),
+          FlashyTabBarItem(
+            icon: Icon(Icons.play_arrow),
+            title: const Text('Akinator'),
           ),
         ],
       ),
