@@ -150,13 +150,21 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: Stack(
         children: [
-          Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage("Bg4.jpg"),
-                fit: BoxFit.cover,
+          Stack(
+            children: [
+              Container(
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("Bg4.jpg"),
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
-            ),
+              Container(
+                color:
+                    Colors.black26.withOpacity(0.2), // Adjust opacity as needed
+              ),
+            ],
           ),
           Positioned(
             top: 30,
@@ -188,74 +196,110 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text("GUESS THE PRICE !!", style: TextStyle(fontSize: 24)),
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Autocomplete<String>(
-                  optionsBuilder: (TextEditingValue textEditingValue) {
-                    if (textEditingValue.text.isEmpty) {
-                      return const Iterable<String>.empty();
-                    }
-                    return commodities
-                        .map((item) => item['Commodity'] as String)
-                        .where((item) =>
-                            item.toLowerCase().contains(
-                                textEditingValue.text.toLowerCase()) &&
-                            !guessedCommodities.contains(item));
-                  },
-                  onSelected: (String value) {
-                    setState(() {
-                      selectedCommodity = value;
-                    });
-                  },
-                  fieldViewBuilder: (
-                    BuildContext context,
-                    TextEditingController controller,
-                    FocusNode focusNode,
-                    VoidCallback onFieldSubmitted,
-                  ) {
-                    return TextField(
-                      controller: controller,
-                      focusNode: focusNode,
-                      decoration: InputDecoration(
-                        border: const OutlineInputBorder(),
-                        hintText: "Search Commodity",
-                        prefixIcon: Icon(Icons.search), // Search icon
-                      ),
-                    );
-                  },
+              const SizedBox(height: 170), // Moves "GUESS THE PRICE !!" up
+              const Text(
+                "GUESS THE PRICE !!",
+                style: TextStyle(
+                  fontSize: 28,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: TextField(
-                  controller: _priceController,
-                  keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
-                    border: const OutlineInputBorder(),
-                    hintText: "Enter Price",
-                    enabled: selectedCommodity != null,
-                    prefixIcon: Icon(Icons.currency_rupee), // Rupee icon
+              const SizedBox(
+                  height: 40), // Reduce space between text and text field
+              Column(
+                mainAxisAlignment:
+                    MainAxisAlignment.start, // Align widgets to the top
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Autocomplete<String>(
+                      optionsBuilder: (TextEditingValue textEditingValue) {
+                        if (textEditingValue.text.isEmpty) {
+                          return const Iterable<String>.empty();
+                        }
+                        return commodities
+                            .map((item) => item['Commodity'] as String)
+                            .where((item) =>
+                                item.toLowerCase().contains(
+                                    textEditingValue.text.toLowerCase()) &&
+                                !guessedCommodities.contains(item));
+                      },
+                      onSelected: (String value) {
+                        setState(() {
+                          selectedCommodity = value;
+                        });
+                      },
+                      fieldViewBuilder: (
+                        BuildContext context,
+                        TextEditingController controller,
+                        FocusNode focusNode,
+                        VoidCallback onFieldSubmitted,
+                      ) {
+                        return TextField(
+                          controller: controller,
+                          focusNode: focusNode,
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Colors.white.withOpacity(0.5),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide.none,
+                            ),
+                            hintText: "Search Commodity",
+                            prefixIcon: const Icon(Icons.search),
+                          ),
+                        );
+                      },
+                    ),
                   ),
-                  onChanged: (value) {
-                    if (value.isNotEmpty &&
-                        !RegExp(r'^[1-9][0-9]*$').hasMatch(value)) {
-                      _priceController.text = "";
-                    }
-                  },
-                ),
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: TextField(
+                      controller: _priceController,
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Colors.white.withOpacity(0.5),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                          borderSide: BorderSide.none,
+                        ),
+                        hintText: "Enter Price",
+                        enabled: selectedCommodity != null,
+                        prefixIcon: const Icon(Icons.currency_rupee),
+                      ),
+                      onChanged: (value) {
+                        if (value.isNotEmpty &&
+                            !RegExp(r'^[1-9][0-9]*$').hasMatch(value)) {
+                          _priceController.text = "";
+                        }
+                      },
+                    ),
+                  ),
+                  const SizedBox(
+                      height: 30), // Increase gap before Submit button
+                  ElevatedButton(
+                    onPressed: predictPrice,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xFF8B5A2B),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                    ),
+                    child: const Text(
+                      "Submit",
+                      style: TextStyle(fontSize: 18, color: Colors.white),
+                    ),
+                  ),
+                  const SizedBox(height: 40), // Space before points
+                  Text("Points: $points",
+                      style: const TextStyle(
+                          fontSize: 24,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold)),
+                ],
               ),
-              ElevatedButton(
-                onPressed: predictPrice,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue, // Button color
-                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-                ),
-                child: const Text("Submit", style: TextStyle(fontSize: 18)),
-              ),
-              Text("Points: $points", style: const TextStyle(fontSize: 24)),
             ],
           ),
         ],
