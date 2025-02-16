@@ -113,7 +113,7 @@ void updateQuestion(String nextId) {
             // Left Text Box
             Positioned(
               left: screenWidth * 0.01, // 5% from the left
-              top: screenHeight * 0.29, // 35% from the top
+              top: screenHeight * 0.25, // 35% from the top
               child: Container(
                 width: screenWidth * 0.4, // 40% of screen width
                 height: screenHeight * 0.05, // 7% of screen height
@@ -134,7 +134,7 @@ void updateQuestion(String nextId) {
             // Right Text Box
             Positioned(
               right: screenWidth * 0.01,
-              top: screenHeight * 0.47,
+              top: screenHeight * 0.43,
               child: Container(
                 width: screenWidth * 0.35,
                 height: screenHeight * 0.10,

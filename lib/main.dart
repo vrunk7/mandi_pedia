@@ -59,7 +59,7 @@ class _HomePageState extends State<HomePage> {
     const InspectPricesTab(key: ValueKey('InspectPricesTab')), // Unique key
     const MandiPediaApp(key: ValueKey('MandiPediaApp')), // Unique key
     const Guess_Price(key: ValueKey('Guess_Price')), // Unique key
-    Fruvenator(), // Unique key
+    const Fruvenator(key: ValueKey('Frvenator')), // Unique key
   ];
 
   @override
@@ -129,7 +129,7 @@ class _HomePageState extends State<HomePage> {
           ),
           FlashyTabBarItem(
             icon: Icon(Icons.play_arrow),
-            title: const Text('Akinator'),
+            title: const Text('FrveNator'),
           ),
         ],
       ),
