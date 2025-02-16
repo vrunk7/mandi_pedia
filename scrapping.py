@@ -20,7 +20,7 @@ CORS(app)
 def scrape_zepto(product_name):
     # Set up Selenium options
     options = Options()
-    options.add_argument('--headless')  # Run in headless mode (no browser UI)
+    # options.add_argument('--headless')  # Run in headless mode (no browser UI)
     options.add_argument('--disable-gpu')
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')

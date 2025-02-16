@@ -10,12 +10,20 @@ import 'search_result.dart';
 import 'inspect_prices_tab.dart';
 import 'akinator.dart';
 import 'splash_screen.dart';
-
+import 'package:device_preview/device_preview.dart';
 
 void main() {
+  // runApp(
+  //   const ProviderScope(
+  //     child: MyApp(),
+  //   ),
+  // );
   runApp(
-    const ProviderScope(
-      child: MyApp(),
+    DevicePreview(
+      enabled: true, // Enable device preview
+      builder: (context) => const ProviderScope(
+        child: MyApp(),
+      ),
     ),
   );
 }
@@ -57,20 +65,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // body: AnimatedSwitcher(
-      //   duration: const Duration(milliseconds: 2000), // Animation duration
-      //   transitionBuilder: (Widget child, Animation<double> animation) {
-      //     return SlideTransition(
-      //       position: Tween<Offset>(
-      //         begin: const Offset(1.0, 0.0), // Slide from right
-      //         end: Offset.zero, // Slide to the center
-      //       ).animate(animation),
-      //       child: child,
-      //     );
-      //   },
-      //   child: _tabs[_selectedIndex], // Current tab content
-      // ),
-
       body: AnimatedSwitcher(
         duration: const Duration(milliseconds: 800), // Smooth transition speed
         switchInCurve: Curves.easeOutExpo, // Smooth entry
@@ -108,7 +102,6 @@ class _HomePageState extends State<HomePage> {
         },
         child: _tabs[_selectedIndex], // Current tab content
       ),
-
       bottomNavigationBar: FlashyTabBar(
         selectedIndex: _selectedIndex,
         animationDuration: const Duration(milliseconds: 500),
