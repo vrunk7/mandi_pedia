@@ -43,6 +43,7 @@ dependencies:
   url_launcher: ^6.3.1
   font_awesome_flutter: ^10.8.0
   outlined_text: ^1.0.1
+  device_preview: ^1.2.0
 
 dev_dependencies:
   flutter_test:
