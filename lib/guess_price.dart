@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'dart:convert';
 import 'package:flutter/services.dart';
-import 'dart:math';
 import 'package:flashy_tab_bar2/flashy_tab_bar2.dart';
 import 'main.dart';
 import 'for_you.dart';

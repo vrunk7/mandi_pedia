@@ -6,6 +6,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.common.exceptions import TimeoutException
 import time
 from flask import Flask, request, jsonify
 from flask_cors import CORS
@@ -13,17 +14,59 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app)
+
 #product = input("ENTER THE PRODUCT NAME: ")
 
 # ------------------------Zepto ------------------------
 
+# def scrape_zepto(product_name):
+#     # Set up Selenium options
+#     options = Options()
+#     # options.add_argument('--headless')  # Run in headless mode (no browser UI)
+#     options.add_argument('--disable-gpu')
+#     options.add_argument('--no-sandbox')
+#     options.add_argument('--disable-dev-shm-usage')
+    
+#     # Initialize the WebDriver
+#     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+    
+#     try:
+#         # Open the Zepto search URL
+#         search_url = f"https://www.zeptonow.com/search?query={product_name}"
+#         driver.get(search_url)
+#         #print(driver.page_source)
+
+#         # Wait for the page to load dynamically
+#         time.sleep(5)  # Increase if necessary for slower connections
+#         #<h4 class="font-heading text-lg tracking-wide line-clamp-1 !font-semibold !text-md !leading-4 !m-0" data-testid="product-card-price">₹208</h4>
+#         wait = WebDriverWait(driver, 10)
+#         # Find the price elements (update the XPath/CSS selector as needed)
+#         # price_elements = driver.find_elements(By.CSS_SELECTOR, 'h4')  # Update with the actual selector for prices
+#         # qty_elements = driver.find_elements(By.CSS_SELECTOR,'span')
+#         price_elements = wait.until(EC.presence_of_all_elements_located((By.TAG_NAME, "h4")))
+#         qty_elements = wait.until(EC.presence_of_all_elements_located((By.TAG_NAME, "span")))
+#         #<h4 class="font-heading text-lg tracking-wide line-clamp-1 mt-1 !text-sm !font-normal">1 kg</h4>
+
+#         # Extract the prices
+#         prices = [price.text for price in price_elements]
+#         qtys = [qty.text for qty in qty_elements]
+#         # print("Zepto")
+#         # output = prices[1] + ' Quantity: ' +qtys[4]
+#         return {"price": prices[1] if len(prices) > 1 else "N/A", "quantity": qtys[4] if len(qtys) > 4 else "N/A"}
+#     finally:
+#         # Close the driver
+#         driver.quit()
+
+# Test the function
+#scrape_zepto(product)
 def scrape_zepto(product_name):
     # Set up Selenium options
     options = Options()
-    options.add_argument('--headless')  # Run in headless mode (no browser UI)
+   # options.add_argument('--headless')  # Run in headless mode
     options.add_argument('--disable-gpu')
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
+    #options.add_argument('--disable-software-rasterizer')
     
     # Initialize the WebDriver
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
@@ -32,39 +75,46 @@ def scrape_zepto(product_name):
         # Open the Zepto search URL
         search_url = f"https://www.zeptonow.com/search?query={product_name}"
         driver.get(search_url)
-        #print(driver.page_source)
 
-        # Wait for the page to load dynamically
-        time.sleep(5)  # Increase if necessary for slower connections
-        #<h4 class="font-heading text-lg tracking-wide line-clamp-1 !font-semibold !text-md !leading-4 !m-0" data-testid="product-card-price">₹208</h4>
+        wait = WebDriverWait(driver, 10)
 
-        # Find the price elements (update the XPath/CSS selector as needed)
-        price_elements = driver.find_elements(By.CSS_SELECTOR, 'h4')  # Update with the actual selector for prices
-        qty_elements = driver.find_elements(By.CSS_SELECTOR,'span')
-        #<h4 class="font-heading text-lg tracking-wide line-clamp-1 mt-1 !text-sm !font-normal">1 kg</h4>
+        # Extract quantity
+        try:
+            qty_element = wait.until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, 'span[data-testid="product-card-quantity"] h4'))
+            )
+            quantity = qty_element.text.strip()
+        except TimeoutException:
+            quantity = "N/A"
 
-        # Extract the prices
-        prices = [price.text for price in price_elements]
-        qtys = [qty.text for qty in qty_elements]
-        # print("Zepto")
-        # output = prices[1] + ' Quantity: ' +qtys[4]
-        return {"price": prices[1] if len(prices) > 1 else "N/A", "quantity": qtys[4] if len(qtys) > 4 else "N/A"}
+        # Extract price
+        try:
+            price_element = wait.until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, 'h4[data-testid="product-card-price"]'))
+            )
+            price = price_element.text.strip()
+        except TimeoutException:
+            price = "N/A"
+
+        return {"price": price, "quantity": quantity}
+
+    except Exception as e:
+        return {"error": str(e)}
+    
     finally:
-        # Close the driver
         driver.quit()
-
-# Test the function
-#scrape_zepto(product)
 
 # --------------------------------------------------------------------------------------------------------------
 
 def scrape_instamart(product_name):
     # Set up Selenium options
     options = Options()
-    options.add_argument('--headless')  # Run in headless mode (no browser UI)
+   # options.add_argument('--headless')  # Run in headless mode (no browser UI)
     options.add_argument('--disable-gpu')
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
+    options.add_argument('--disable-software-rasterizer')
+
     
     # Initialize the WebDriver
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
@@ -74,13 +124,15 @@ def scrape_instamart(product_name):
         search_url = f"https://www.swiggy.com/instamart/search?custom_back=true&query={product_name}"
         driver.get(search_url)
         time.sleep(5)  # Wait for the page to load
+       # print(driver.page_source)
+
         
         # Wait for price elements to load
         wait = WebDriverWait(driver, 20)  # Wait up to 20 seconds for elements
         
         # Select price elements (Ensure visibility)
         price_elements = wait.until(
-            EC.visibility_of_all_elements_located((By.CSS_SELECTOR, 'div.sc-aXZVg.ihMJwf.JZGfZ[aria-label]'))
+            EC.visibility_of_all_elements_located((By.CSS_SELECTOR, 'div.sc-aXZVg.jLtxeJ.JZGfZ[aria-label]'))
         )
         prices = [price.get_attribute('aria-label') for price in price_elements]
 

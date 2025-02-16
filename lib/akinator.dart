@@ -5,6 +5,8 @@ import 'package:outlined_text/outlined_text.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Fruvenator extends StatelessWidget {
+  const Fruvenator({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -15,6 +17,8 @@ class Fruvenator extends StatelessWidget {
 }
 
 class FruveNatorGame extends StatefulWidget {
+  const FruveNatorGame({super.key});
+
   @override
   _FruveNatorGameState createState() => _FruveNatorGameState();
 }
@@ -294,7 +298,7 @@ void updateQuestion(String nextId) {
                     ),
                   ),
                 ))
-            .toList()
+            
       ],
     );
   }
