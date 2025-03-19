@@ -1,16 +1,5 @@
 # mandi_pedia
 
-A new Flutter project.
+*Mandipedia – Your Smart Grocery Companion*  
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Mandipedia is an all-in-one grocery price analysis app designed to help users make smarter shopping decisions. Our *Price Comparison* feature retrieves real-time prices from top grocery platforms using web scraping. The *Trend Analysis* screen provides historical price insights with interactive graphs. The *For You* section recommends products based on user preferences. We add a fun twist with *Guess the Price, where users predict product prices, and **Fruvenator*, an Akinator-style game that guesses the fruit or vegetable you're thinking of. With data-driven insights and engaging features, Mandipedia transforms grocery shopping into a smarter and more interactive experience! 🚀🥦📊
